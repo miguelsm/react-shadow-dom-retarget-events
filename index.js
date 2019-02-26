@@ -57,6 +57,7 @@ module.exports = function retargetEvents(shadowRoot) {
                     break;
                 }
             }
+            event.stopPropagation();
         }
 
         shadowRoot.addEventListener(nativeEventName, retargetEvent, false);
