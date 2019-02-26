@@ -49,6 +49,7 @@ module.exports = function retargetEvents(shadowRoot) {
                     break;
                 }
             }
+            event.stopPropagation();
         }, false);
     });
 };
