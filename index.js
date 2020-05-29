@@ -97,13 +97,37 @@ function findReactProps(component) {
 
 }
 
+function functionThatReturnsFalse() {
+    return false;
+}
+
+function functionThatReturnsTrue() {
+    return true;
+}
+
+function createSyntheticEvent(event) {
+    var syntheticEvent = {};
+    for (k in event) {
+        syntheticEvent[k] = event[k];
+    }
+    syntheticEvent.nativeEvent = event;
+    syntheticEvent.isPersistent = functionThatReturnsTrue;
+    syntheticEvent.preventDefault = functionThatReturnsTrue;
+    syntheticEvent.stopPropagation = functionThatReturnsTrue;
+    syntheticEvent.isPropagationStopped = functionThatReturnsFalse;
+    syntheticEvent.isDefaultPrevented = event.defaultPrevented
+        ? functionThatReturnsTrue
+        : functionThatReturnsFalse;
+    return syntheticEvent;
+}
+
 function dispatchEvent(event, eventType, componentProps) {
     event.persist = function() {
         event.isPersistent = function(){ return true};
     };
 
     if (componentProps[eventType]) {
-        componentProps[eventType](event);
+        componentProps[eventType](createSyntheticEvent(event));
     }
 }
 
