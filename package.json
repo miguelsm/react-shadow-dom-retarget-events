@@ -1,9 +1,12 @@
 {
-  "name": "react-shadow-dom-retarget-events",
+  "name": "@miguelsm/react-shadow-dom-retarget-events",
   "version": "1.0.10",
   "description": "Retargets event in a shadow root to react",
   "main": "index.js",
-  "repository": "WeltN24/react-shadow-dom-retarget-events",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelsm/react-shadow-dom-retarget-events.git"
+  },
   "author": "Lukas Bombach <lukas.bombach@googlemail.com>",
   "license": "MIT"
 }
